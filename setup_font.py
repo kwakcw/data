@@ -23,15 +23,28 @@ else:
 
 # 4️⃣ Matplotlib에 폰트 적용
 fm.fontManager.addfont(font_path)
-fontprop = fm.FontProperties(fname=font_path)
+# fontprop = fm.FontProperties(fname=font_path)
 
 # 5️⃣ 기본 폰트 설정
-plt.rc('font', family=fontprop.get_name())
+# plt.rc('font', family=fontprop.get_name()) 수정전
+plt.rc('font', family='NanumGothic')
 
 # 6️⃣ Seaborn에도 적용
-sns.set(font=fontprop.get_name())
+# sns.set(font=fontprop.get_name()) 수정전
+sns.set(font='Nanumgothic')
 
 # 7️⃣ 폰트 캐시 갱신
-fm._load_fontmanager()
+# fm._load_fontmanager()
 
 print("🎉 한글 폰트가 성공적으로 적용되었습니다! ✅")
+
+# Call setup_font() when the script is run
+if __name__ == "__main__":
+  # If we are in a Google Colab environment, attempt mounting.
+  if 'google.colab' in sys.modules:
+      try:
+          google.colab.drive.mount('/content/drive', force_remount=True)
+      except AttributeError:
+          # Ignore AttributeError if `google.colab.drive` is unavailable
+          pass
+  setup_font()
