@@ -9,18 +9,14 @@ from google.colab import drive
 drive.mount('/content/drive', force_remount=True)
  
  # 2️⃣ 폰트 저장 경로 설정 (Google Drive에 저장)
-font_dir = os.path.join(os.path.expanduser("~"), "/content/drive/MyDrive/fonts")
-subprocess.run(["mkdir", "-p", font_dir])
-font_path = f"{font_dir}/NanumGothic.ttf"
-font_dir = os.path.join('/content/drive/MyDrive/', "fonts")
+font_dir = "/content/drive/MyDrive/fonts"
 os.makedirs(font_dir, exist_ok = True)
 font_path = os.path.join(font_dir, "NanumGothic.ttf")
  
  # 3️⃣ 폰트 다운로드 (없으면 다운로드)
 if not os.path.exists(font_path):
-    subprocess.run(["mkdir", "-p", font_dir])
-    print("다운로드 NanumGothic.ttf...")
-    subprocess.run(["wget", "-O", font_path, "https://hangeul.pstatic.net/hangeul_static/webfont/NanumGothic/NanumGothic.ttf"])
+    print("⏳ NanumGothic.ttf 다운로드 중...")
+    !wget -O "$font_path" "https://hangeul.pstatic.net/hangeul_static/webfont/NanumGothic/NanumGothic.ttf"
     print("✅ 폰트 다운로드 완료!")
 else:
     print("🔹 기존 폰트 사용")
@@ -36,6 +32,6 @@ plt.rc('font', family=fontprop.get_name())
 sns.set(font=fontprop.get_name())
  
  # 7️⃣ 폰트 캐시 갱신
-fm._load_fontmanager()
+fm.fontmanager._rebuild()
  
 print("🎉 한글 폰트가 성공적으로 적용되었습니다! ✅")
