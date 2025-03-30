@@ -16,7 +16,7 @@ font_path = f"{font_dir}/NanumGothic.ttf"
 # 3️⃣ 폰트 다운로드 (없으면 다운로드)
 if not os.path.exists(font_path):
     subprocess.run(["mkdir", "-p", font_dir])
-    !wget -O {font_path} https://hangeul.pstatic.net/hangeul_static/webfont/NanumGothic/NanumGothic.ttf
+    subprocess.run(["wget", "-O", font_path, "https://hangeul.pstatic.net/hangeul_static/webfont/NanumGothic/NanumGothic.ttf"])
     print("✅ 폰트 다운로드 완료!")
 else:
     print("🔹 기존 폰트 사용")
