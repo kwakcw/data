@@ -1,3 +1,4 @@
+import subprocess
 import os
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
@@ -8,7 +9,8 @@ from google.colab import drive
 drive.mount('/content/drive', force_remount=True)
 
 # 2️⃣ 폰트 저장 경로 설정 (Google Drive에 저장)
-font_dir = "/content/drive/MyDrive/fonts"
+font_dir = os.path.join(os.path.expanduser("~"), "/content/drive/MyDrive/fonts")
+subprocess.run(["mkdir", "-p", font_dir])
 font_path = f"{font_dir}/NanumGothic.ttf"
 
 # 3️⃣ 폰트 다운로드 (없으면 다운로드)
