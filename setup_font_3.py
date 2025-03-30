@@ -38,6 +38,6 @@ plt.rc('font', family=fontprop.get_name())
 sns.set(font=fontprop.get_name())
 
 # 7️⃣ 폰트 캐시 갱신
-fm._load_fontManager()
+fm._load_fontmanager()
 
 print("🎉 한글 폰트가 성공적으로 적용되었습니다! ✅")
